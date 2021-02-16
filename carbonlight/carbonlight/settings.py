@@ -1,6 +1,8 @@
 
 from pathlib import Path
 import os
+from datetime import datetime, timedelta
+import sys
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'data',
+    'import_export',
+    'rest_framework',
     
 ]
 
