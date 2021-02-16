@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-    'carbonlight',
+    'data',
+    
 ]
 
 MIDDLEWARE = [
