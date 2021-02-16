@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import sys
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'data',
     'import_export',
     'rest_framework',
+    'frontend',
     
 ]
 
