@@ -32,9 +32,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     
+    'rest_framework',
     'data',
     'import_export',
-    'rest_framework',
+    
     'frontend',
     "whitenoise.runserver_nostatic",   
 ]
@@ -108,6 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
