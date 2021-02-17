@@ -6,6 +6,7 @@ import sys
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,14 +31,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    
     'data',
     'import_export',
     'rest_framework',
     'frontend',
-    
+    "whitenoise.runserver_nostatic",   
 ]
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,7 +55,7 @@ ROOT_URLCONF = 'carbonlight.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend', 'templates', 'frontend'), os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,7 +127,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+
+#STORAGE
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
-client_encoding: 'UTF8'
+#FRONTEND ADMIN / FRONTEND
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'manager/static'),
+    os.path.join(BASE_DIR, 'frontend/static')
+]
+
+CORS_ORIGIN_ALLOW_ALL =  True
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+
+
